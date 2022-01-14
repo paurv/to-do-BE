@@ -6,22 +6,25 @@
   },
   "description": "",
   "main": "index.js",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include" : [
+    "src/**/*.ts" 
+  ],
+  "exclude" : [
+    "node_modules"
+  ],
   "scripts": {
     "start": "ts-node ./src/server.ts",
     "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
     "start:prod": "npm run build && node ./dist/src/server.js",
     "build": "npx tsc",
-    "postinstall": "tsc",
-    "watch-node": "nodemon dist/src/server.js",
-    "watch-ts": "tsc -w",
-    "deploy": "git add . && git commit -m Heroku && git push heroku master",
+    "dev": "nodemon -x ts-node ./src/config/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
