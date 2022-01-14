@@ -21,7 +21,7 @@ app.use(Routes);
 mongoose.connect(process.env.URLDB);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Application works :)');
+  res.send('Application works');
 });
 app.listen(port, () => {
   console.log(`Application started on port ${ port }`);
