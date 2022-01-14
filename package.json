@@ -9,12 +9,23 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "outDir": "dist"
+    "outDir": "build",
+    "declaration": true
   },
   "include":  [ "src/", "config/"],
   "typeRoots": ["./node_modules/@types", "./typings"],
+  "types": "build/server.d.ts",
+  "files": [
+    "build",
+    "package.json",
+    "package-lock.json",
+    "README.md"
+  ],
   "scripts": {
-    "start": "ts-node dist/server.ts",
+    "tsc": "tsc",
+    "prepare": "npm run tsc",
+    "start": "ts-node src/server.ts",
+    "start:prod": "node build/server.ts",
     "build": "tsc",
     "serve": "nodemon server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
