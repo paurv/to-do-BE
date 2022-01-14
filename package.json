@@ -27,6 +27,7 @@
     "serve": "node dist/src/server.js",
     "watch-node": "nodemon dist/src/server.js",
     "build": "tsc",
+    "build-ts": "tsc",
     "clean": "tsc --build --clean",
     "watch-ts": "tsc --watch"
   },
