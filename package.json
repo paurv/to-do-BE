@@ -6,42 +6,23 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "outDir": "build",
-    "declaration": true,
-    "lib": [
-      "es2018",
-      "esnext.asynciterable"
-    ],
-    "skipLibCheck": true,
-    "strict": true,
-    "strictFunctionTypes": false,
-    "strictPropertyInitialization": false,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "outDir": "dist"
   },
   "include": [
     "src/",
     "config/"
   ],
-  "typeRoots": [
-    "./node_modules/@types",
-    "./typings"
-  ],
-  "types": "build/server.d.ts",
   "files": [
-    "build",
     "package.json",
     "package-lock.json",
     "README.md"
   ],
   "scripts": {
-    "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "start": "npm run serve",
     "serve": "node dist/src/server.js",
     "watch-node": "nodemon dist/src/server.js",
-    "watch-ts": "tsc -w"
+    "watch-ts": "tsc --watch"
   },
   "engines": {
     "node": "16.13.1"
@@ -49,6 +30,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@typegoose/typegoose": "^9.4.0",
+    "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
