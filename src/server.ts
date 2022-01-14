@@ -2,7 +2,7 @@ require('./config/config');
 import express from 'express';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import cors from 'cors';
 
 import Routes from './routes';
