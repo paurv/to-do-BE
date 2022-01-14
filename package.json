@@ -22,11 +22,11 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "npm run build-ts && rm ./node_modules/mongoose/index.d.ts",
+    "postinstall": "npm run build-ts && rm node_modules/mongoose/node_modules/mongodb/mongodb.d.ts",
     "start": "npm run serve",
     "serve": "node dist/src/server.js",
     "watch-node": "nodemon dist/src/server.js",
-    "build": "tsc --build",
+    "build": "tsc",
     "clean": "tsc --build --clean",
     "watch-ts": "tsc --watch"
   },
