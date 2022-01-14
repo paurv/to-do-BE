@@ -11,18 +11,12 @@
     "target": "es6",
     "outDir": "dist"
   },
-  "include" : [
-    "src/**/*.ts" 
-  ],
-  "exclude" : [
-    "node_modules"
-  ],
+  "include":  [ "src/", "config/"],
+  "typeRoots": ["./node_modules/@types", "./typings"],
   "scripts": {
-    "start": "ts-node ./src/server.ts",
-    "build": "npx tsc",
+    "start": "ts-node dist/server.ts",
+    "build": "tsc",
     "serve": "nodemon server.ts",
-    "dev": "nodemon -exec ts-node ./src/server.ts --mode development",
-    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
