@@ -7,7 +7,6 @@
     "module": "commonjs",
     "target": "es6",
     "outDir": "build",
-    "skipLibCheck": true,
     "declaration": true
   },
   "include": [
@@ -39,6 +38,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
