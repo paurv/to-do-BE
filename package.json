@@ -7,7 +7,16 @@
     "module": "commonjs",
     "target": "es6",
     "outDir": "build",
-    "declaration": true
+    "declaration": true,
+  
+    "lib": ["es2018", "esnext.asynciterable"],
+    "skipLibCheck": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src/",
