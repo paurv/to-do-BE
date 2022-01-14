@@ -24,41 +24,11 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
                 error: 'User or password is not valid - pass'
             });
         }
-
-        
     } catch (e) {
         return res.status(500 ).json({
             msg: 'Error at login'
         })
     }
-
-
-    // // let data: IUser = req.body;
-    // // let condition = { email: data.email };
-    // // User.findOne( condition )
-    // //     .then( userDB => {
-    // //         if ( !userDB ) {
-    // //             return res.status(400).json({
-    // //                 ok: false,
-    // //                 error: 'Wrong password or user'
-    // //             });
-    // //         }
-    // //         const token = jwt.sign(
-    // //             { user: userDB },
-    // //             process.env.SEED,
-    // //             { expiresIn: process.env.EXP_TOKEN }
-    // //         )
-    // //         res.json({
-    // //             ok: true,
-    // //             user: userDB,
-    // //             token
-    // //         })
-    // //     }).catch( err => {
-    // //         res.status(500).json({
-    // //             ok: false,
-    // //             error: err
-    // //         })
-    // //     })
     res.json({
         ok: true,
         data: 'Login ok'

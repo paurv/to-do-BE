@@ -12,24 +12,10 @@
     "target": "es6",
     "outDir": "dist"
   },
-  "include": [
-    "src/**/*",
-    "config/**/*"
-  ],
-  "files": [
-    "package.json",
-    "package-lock.json",
-    "README.md"
-  ],
   "scripts": {
-    "postinstall": "npm run build-ts && rm node_modules/mongoose/node_modules/mongodb/mongodb.d.ts",
-    "start": "npm run serve",
-    "serve": "node dist/src/server.js",
-    "watch-node": "nodemon dist/src/server.js",
-    "build": "tsc",
-    "build-ts": "tsc",
-    "clean": "tsc --build --clean",
-    "watch-ts": "tsc --watch"
+    "dev": "ts-node src/server.ts",
+    "start": "ts-node dist/server.js",
+    "build": "tsc -p ."
   },
   "engines": {
     "node": "16.13.1"

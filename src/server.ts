@@ -2,9 +2,7 @@ require('./config/config');
 import express from 'express';
 import { Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
-
-// import mongoose = require('mongoose')
-import mongoose from 'mongoose';
+import Conect from './config/connects';
 
 import cors from 'cors';
 
@@ -21,7 +19,9 @@ app.use(cors());
 
 app.use(Routes);
 
-mongoose.connect(process.env.URLDB);
+// mongoose.connect(process.env.URLDB);
+const db = "mongodb://localhost:27017/test"
+Conect({ db })
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Application works');
