@@ -9,7 +9,7 @@ import Routes from './routes';
 
 // const routers = require('./routes/index');
 const app = express();
-const port = 8888;
+const port = process.env.PORT;
 
 // middlewares
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ app.use(Routes);
 mongoose.connect(process.env.URLDB);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Application works ji ji!');
+  res.send('Application works');
 });
 app.listen(port, () => {
   console.log(`Application started on port ${ port }`);
