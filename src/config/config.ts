@@ -11,7 +11,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 //======================================
 //  Token expire date
 //======================================
-process.env.EXP_TOKEN = (60 * 60 * 24 * 20).toString();
+process.env.EXP_TOKEN = (60 * 60 * 24 * 1000).toString();
 
 //======================================
 //  Auth seed
@@ -25,6 +25,7 @@ let urlDB;
 
 if ( process.env.NODE_ENV === 'dev' ) {
     urlDB = 'mongodb://localhost:27017/ToDoDB';
+    // // urlDB = 'mongodb+srv://paurv:ar7sept@cluster0.xycu9.mongodb.net/ToDoBE';
 } else {
     urlDB = process.env.MONGODB_URI;
 }

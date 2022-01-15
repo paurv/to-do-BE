@@ -3,36 +3,41 @@ import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import User, { IUser } from "../models/user.model";
 
-import { check } from "express-validator";
 import validateFields from "../middlewares/validate-fields";
+import { check } from "express-validator";
+import { generateToken } from "../helpers/generate-token";
 
 const authRouter = express();
 
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body;
     try {
+        const loginError = res.status(400).json({ error: 'User or password is not valid' });
+        const { email, password } = req.body;
         const user = await User.findOne({ email });
         if ( !user ) {
-            return res.status(400).json({
-                error: 'User or password is not valid - ema'
-            });
+            return loginError;
         }
         const validPassword = bcrypt.compareSync( password, user.password );
         if( !validPassword ) {
-            return res.status(400).json({
-                error: 'User or password is not valid - pass'
-            });
+            return loginError;
         }
+        
+        const token = await generateToken( user.id );
+        
+        return res.json({
+            ok: true,
+            data: 'Login ok!',
+            user,
+            token
+        })
     } catch (e) {
-        return res.status(500 ).json({
+        console.log(e);
+        
+        return res.status(500).json({
             msg: 'Error at login'
         })
     }
-    res.json({
-        ok: true,
-        data: 'Login ok'
-    })
 }
 authRouter.post('/login', [
     check('email', 'Mail is mandatory.').isEmail(),

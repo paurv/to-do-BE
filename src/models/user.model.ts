@@ -32,9 +32,11 @@ let userSchema = new Schema(
 );
 
 userSchema.methods.toJSON = function() {
-    let user = this;
-    let userObject = user.toObject();
+    const user = this;
+    const userObject = user.toObject();
+    userObject.uid   = userObject._id;
     delete userObject.password;
+    delete userObject._id;
 
     return userObject;
 };

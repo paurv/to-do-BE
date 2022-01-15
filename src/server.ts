@@ -8,7 +8,6 @@ import cors from 'cors';
 
 import Routes from './routes';
 
-// const routers = require('./routes/index');
 const app = express();
 const port = process.env.PORT;
 
