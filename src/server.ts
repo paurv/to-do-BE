@@ -21,7 +21,7 @@ app.use(Routes);
 
 // mongoose.connect(process.env.URLDB);
 const db = "mongodb://localhost:27017/test"
-Conect({ db })
+// Conect({ db })
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Application works');
