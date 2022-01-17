@@ -7,4 +7,6 @@ const emailExist  = async( email = '') => {
     }
 }
 
-export { emailExist }
+export {
+    emailExist
+}
