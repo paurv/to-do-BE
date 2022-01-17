@@ -1,11 +1,10 @@
 import express,  { Request, Response, NextFunction } from "express";
+import { check } from 'express-validator';
+import * as bcrypt from 'bcrypt';
+
 import validateFields from "../middlewares/validate-fields";
 import { emailExist } from "../helpers/validators"
 import User from "../models/user.model";
-
-import { check, validationResult } from 'express-validator';
-import * as bcrypt from 'bcrypt';
-
 
 const userRouter = express();
 
@@ -19,7 +18,7 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
         res.json({
             ok: true,
             data: user
-        })
+        });
     } catch (e) {
         res.status(500).json({
             ok: false,

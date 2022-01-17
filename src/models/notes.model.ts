@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, connect } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 export interface INotes {
     title: string,
@@ -18,10 +18,11 @@ let notesSchema: Schema = new Schema(
             desc: {type: String, trim: true },
             done: Boolean
         }]
+    },
+    {
+        versionKey: false
     }
 );
 
 const Notes = mongoose.model<INotes>('Notes', notesSchema);
 export default Notes;
-
-// export default mongoose.model('Notes', notesSchema);

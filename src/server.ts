@@ -8,7 +8,6 @@ import cors from 'cors';
 
 import Routes from './routes';
 
-// const routers = require('./routes/index');
 const app = express();
 const port = process.env.PORT;
 
@@ -19,12 +18,12 @@ app.use(cors());
 
 app.use(Routes);
 
+const db = process.env.URLDB;
 // mongoose.connect(process.env.URLDB);
-const db = "mongodb://localhost:27017/test"
-// Conect({ db })
+Conect({ db })
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Application works');
+  res.send('Application works :))');
 });
 app.listen(port, () => {
   console.log(`Application started on port ${ port }`);
