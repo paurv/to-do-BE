@@ -9,7 +9,8 @@ import { ObjectId } from 'mongodb';
 const notesRouter = express();
 
 const getNotes = (req: Request, res: Response, next: NextFunction) => {
-    Notes.find()
+    const filter = { owner: req.params.idOwner};
+    Notes.find( filter )
         .exec()
         .then( notes => {
             res.status(200).json({
@@ -20,10 +21,24 @@ const getNotes = (req: Request, res: Response, next: NextFunction) => {
             res.status(400).json({
                 ok: false,
                 error
-            })
-        })
+            });
+        });
+
+    // // Notes.find()
+    // //     .exec()
+    // //     .then( notes => {
+    // //         res.status(200).json({
+    // //             ok: true,
+    // //             data: notes
+    // //         });
+    // //     }).catch( error => {
+    // //         res.status(400).json({
+    // //             ok: false,
+    // //             error
+    // //         })
+    // //     })
 }
-notesRouter.get('/', [
+notesRouter.get('/:idOwner', [
     validateToken
 ], getNotes);
 
@@ -55,18 +70,13 @@ notesRouter.post('/', [
     validateToken
 ], createNotes);
 
-
 const updateTodoList = (req: Request, res: Response, next: NextFunction) => {
     const noteId = req.params.noteid;
     const { todolist } = _.pick( req.body, ['todolist']);
-    
     let updatedToDos = [];
     todolist.forEach((toDo: any) => {
         updatedToDos.push({...toDo, _id: new ObjectId()})
     });
-    console.log('new to do list: ', {todolist: updatedToDos});
-    
-    
     Notes.findByIdAndUpdate( noteId, { todolist: updatedToDos }, {new: true, runValidators: true})
         .then( updatedList => {
             res.status(200).json({
@@ -84,7 +94,6 @@ notesRouter.put('/:noteid', [
     validateToken
 ], updateTodoList);
 
-// delete Notes
 const deleteNote = (req: Request, res: Response, next: NextFunction) => {
     const noteId = req.params.noteid;
     Notes.findByIdAndRemove( noteId )   
