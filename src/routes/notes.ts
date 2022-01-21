@@ -49,7 +49,7 @@ const createNotes = (req: Request, res: Response, next: NextFunction) => {
         newToDos.push({...toDo, _id: new ObjectId()})
     })
     const note = new Notes({
-        owner: new mongoose.Types.ObjectId(req['uid']),
+        owner: new mongoose.Types.ObjectId('61e0cd30504cf470e12898e4'),
         title: title,
         todolist: newToDos
     });

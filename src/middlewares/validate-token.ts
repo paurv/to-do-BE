@@ -9,8 +9,8 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
     //     })
     // }
     try {
-        const { uid } = jwt.verify( token, process.env.SEED );
-        req['uid'] = uid;
+        // const { uid } = jwt.verify( token, process.env.SEED );
+        // req['uid'] = uid;
         
         next();
     } catch (err) {
